@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './App.css';
 import './i18n/config';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
