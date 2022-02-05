@@ -1,14 +1,20 @@
 
 interface BookmarksItemI {
-    name: string; 
-    url: string;
+    title: string; 
     description: string;
-    iconUrl: string;
+    image?: string;
+    urlMarkbook: string;
+    rating?: string;
+    ratingCounter?: string;
 }
 
 interface BookmarksUpItemI {
-    name?: string; 
+    title?: string; 
     description?: string;
+    image?: string;
+    urlMarkbook?: string;
+    rating?: string;
+    ratingCounter?: string;
 }
 
 

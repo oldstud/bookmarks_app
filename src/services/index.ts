@@ -1,15 +1,24 @@
 import axios from 'axios'
-axios.defaults.baseURL = '';
+import API_URLS from '../constants/api/api-urls.constants';
+axios.defaults.baseURL = API_URLS.baseURL;
 
 export { 
     httpLogin,
     httpRegistration,
-    httpLogOut
+    httpLogOut,
 } from './auth-http.service';
 
 export {  
-    httpGetList,
-    httpGetMarksItem,
-    httpUpdateMarksItem
+    httpGetPublicList,
+    httpGetByIdPublicMarksItem,
+    httpGetListPrivateMarksItems,
+    httpCreateMarksItem,
+    httpUpdatePrivateMarksItem,
+    httpDeletePrivateMarksItem,
 } from './bookmarks-http.service';
+
+export {  
+    httpAddMarksComment,
+    httpGetAllMarksComment,
+} from './comment-http.service';
 

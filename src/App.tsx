@@ -1,11 +1,13 @@
 import React from 'react';
-
-import './App.css';
+import { Routes, Route, Outlet, Link } from "react-router-dom";
 import './i18n/config';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 import Container from './components/Container'
+import { Navigation } from './components/Navigation';
+
+
 
 function App() {
   const { t } = useTranslation();
@@ -14,8 +16,13 @@ function App() {
     i18next.changeLanguage(lng);
   }
 
+
+  
+
   return (
     <div className="App">
+       <Navigation navButtonTitle = 'Menu'/>
+
       <Container title={ t('title_1') }>
         <>
           <button onClick={() => changeLanguage('ru')}>ru leng</button>
@@ -23,10 +30,14 @@ function App() {
           <button onClick={() => changeLanguage('ua')}>ua leng</button>
         </>
       </Container>
+
      <p>{ t('title_1') }</p>
 
+  
     </div>
   );
 }
+
+
 
 export default App;
