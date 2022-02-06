@@ -8,14 +8,20 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import { INavigation } from "../../interface/api/navigation.interface";
+import { Link } from "react-router-dom";
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export const Navigation:React.FC<INavigation> = (props) => {
-  const {navButtonTitle} = props;
+  const { 
+    navButtonTitle,
+    navigationArray,
+    bottomNavigationArray
+   } = props;
 
     const [state, setState] = React.useState({
         top: false,
@@ -47,21 +53,26 @@ export const Navigation:React.FC<INavigation> = (props) => {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            {navigationArray.map((text, index) => (
+             
               <ListItem button key={text}>
+               <Link to={`/${text.toLowerCase()}`} style={{display:'flex',color:'inherit',transform:'scale(1.2)'}}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index == 1 ? <ContactsIcon/> : <HomeIcon />}
                 </ListItemIcon>
+              
                 <ListItemText primary={text} />
+                </Link>
               </ListItem>
+           
             ))}
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {bottomNavigationArray.map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <SettingsIcon />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -74,7 +85,7 @@ export const Navigation:React.FC<INavigation> = (props) => {
     return (
         <div>
         <React.Fragment>
-          <Button onClick={toggleDrawer('left', true)}>{navButtonTitle}</Button>
+          <Button size='large' onClick={toggleDrawer('left', true)}>{navButtonTitle}</Button>
           <SwipeableDrawer
             anchor={'left'}
             open={state['left']}
