@@ -22,9 +22,9 @@ function App() {
         bottomNavigationArray={['Settings']}/>
 
      <Routes>
-        <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Home />}/>
           <Route index element={<Page />} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="*" element={<Page />} />
         {/* </Route> */}
       </Routes>

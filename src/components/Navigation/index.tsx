@@ -12,7 +12,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import { INavigation } from "../../interface/api/navigation.interface";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -56,13 +56,13 @@ export const Navigation:React.FC<INavigation> = (props) => {
             {navigationArray.map((text, index) => (
              
               <ListItem button key={text}>
-               <Link to={`/${text.toLowerCase()}`} style={{display:'flex',color:'inherit',transform:'scale(1.2)'}}>
+               <NavLink to={`/${text.toLowerCase()}`}>
                 <ListItemIcon>
                   {index == 1 ? <ContactsIcon/> : <HomeIcon />}
                 </ListItemIcon>
               
                 <ListItemText primary={text} />
-                </Link>
+                </NavLink>
               </ListItem>
            
             ))}
