@@ -1,40 +1,34 @@
 import React from 'react';
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import './i18n/config';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-
-import Container from './components/Container'
-import { Navigation } from './components/Navigation';
-
-
+import { Home } from './pages/Home/Home';
+import { AuthPage } from './pages/Auth/AuthPage';
+import { PrivateRoute, PublicRoute } from './components/RoutesComponents'
 
 function App() {
-  const { t } = useTranslation();
-
-  const changeLanguage = (lng: string) => {
-    i18next.changeLanguage(lng);
-  }
-
-
-  
 
   return (
-    <div className="App">
-       <Navigation navButtonTitle = 'Menu'/>
+    <>
+     <Routes>
+       
+     <Route path="/" element={ 
+       <PublicRoute redirectTo="/home" restricted >
+          <AuthPage />
+       </PublicRoute>   
+     }/>
 
-      <Container title={ t('title_1') }>
-        <>
-          <button onClick={() => changeLanguage('ru')}>ru leng</button>
-          <button onClick={() => changeLanguage('en')}>en leng</button>
-          <button onClick={() => changeLanguage('ua')}>ua leng</button>
-        </>
-      </Container>
+     <Route path="/home" element={ 
+        <PrivateRoute redirectTo="/" >
+          <Home />
+        </PrivateRoute>
+     }/> 
 
-     <p>{ t('title_1') }</p>
+     <Route path='*' element={ 
+        <h2>404 page error</h2>
+     }/> 
 
-  
-    </div>
+    </Routes> 
+    </>
   );
 }
 
