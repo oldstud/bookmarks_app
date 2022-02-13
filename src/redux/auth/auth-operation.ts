@@ -15,11 +15,13 @@ const token = {
   },
 };
 
+
 export const LogIn = (formData: any) => async (dispatch: any) => {
   dispatch(action.logInRequest({}));
 
   try {
-    const { data } = await httpLogin(formData);
+    const result = await httpLogin(formData);
+    const { data } = result.data
     token.set(data.token);
     dispatch(action.logInSuccess(data));
   } catch (error) {
@@ -32,7 +34,8 @@ export const signUp = (formData: any) => async (dispatch: any) => {
   dispatch(action.signUpRequest({}));
 
   try {
-    const { data } = await httpRegistration(formData);
+    const result = await httpRegistration(formData);
+    const { data } = result.data
     token.set(data.token);
     dispatch(action.signUpSuccess(data));
   } catch (error) {

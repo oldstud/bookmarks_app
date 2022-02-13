@@ -2,8 +2,8 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import * as action from './auth-actions';
 
 const userReducer = createReducer(null, {
-  [action.signUpSuccess.type]: (_, { payload }) => payload.user,
-  [action.logInSuccess.type]: (_, { payload }) => payload.user,
+  [action.signUpSuccess.type]: (_, { payload }) => payload,
+  [action.logInSuccess.type]: (_, { payload }) => payload,
   [action.logOutSuccess.type]: () => null,
   [action.getCurrentUserSuccess.type]: (_, { payload }) => payload,
 });

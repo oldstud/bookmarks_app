@@ -1,51 +1,39 @@
 import React from "react";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { FormWrapper } from './StyledComponent'
+import { LoginForm } from '../../components/Auth/LoginForm';
+import { SignInForm } from '../../components/Auth/SignInForm';
 
-import { LogIn, signUp } from '../../redux/auth/auth-operation';
-import { useDispatch } from 'react-redux';
+
+function FormRow() {
+  return (
+    <>      
+        <FormWrapper>
+         <LoginForm/>
+         <SignInForm/>
+        </FormWrapper>
+    </>
+  );
+}
+
 
 export const AuthPage:React.FC = () => {
-
-    const dispatch = useDispatch();
-
-    function handlerAuthForm(event: any) {
-        event.preventDefault()
-        const data = {
-          password: event.target.elements.pass.value,
-          email: event.target.elements.email.value
-        }
-
-        console.log('auth>>>>>', data)
-        dispatch(LogIn(data))
-    }
-
-    function handlerRegForm(event: any) {
-      event.preventDefault()
-
-      const data = {
-        password: event.target.elements.pass.value,
-        email: event.target.elements.email.value
-      }
-
-      console.log('Reg>>>>>', data)
-      dispatch(signUp(data))
-   }
-
-    return (
-      <>
-        <h2> Auth form </h2>
-        <form onSubmit={handlerAuthForm} >
-          <input type="email" name="email" placeholder="email"/>
-          <input type="password" name="pass" placeholder="password"/>
-          <button type="submit">Auth</button>
-        </form>
-
-        <h2> Reg form </h2>
-        <form onSubmit={handlerRegForm} >
-          <input type="text" name="email" placeholder="email" />
-          <input type="password" name="pass" placeholder="password"/>
-          <button type="submit">Reg</button>
-        </form>
-      </>
+    return (   
+      <Box sx={{ flexGrow: 1}}>
+      <Grid
+          sx={{ height: '100vh'}}
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={{ xs: 2, md: 3 }} 
+          columns={{ xs: 4, sm: 8, md: 12 }}>     
+             <Grid item xs={2} sm={4} md={4} >
+               <FormRow/>
+             </Grid>
+      </Grid>
+    </Box>
     )
 }
 
