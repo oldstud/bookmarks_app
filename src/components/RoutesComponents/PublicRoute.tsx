@@ -5,7 +5,7 @@ import { RouteI } from '../../interface/route.intrface'
 
 export const PublicRoute:React.FC<RouteI> = (props) => {
     let {
-      children,
+        children,
         restricted = false,
         redirectTo = '/',  
       } = props;
