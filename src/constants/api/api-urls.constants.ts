@@ -1,6 +1,6 @@
  enum API_URLS {
-    baseURL = 'https://markbooks-api.herokuapp.com',
-    socketChatUrl = 'wss://markbooks-api.herokuapp.com/chat',
+    baseURL = 'https://bookmarks-api-v2.herokuapp.com',
+    socketChatUrl = 'wss://bookmarks-api-v2.herokuapp.com',
     login = '/api/users/login',
     reg = '/api/users/registration',
     logout = '/api/users/logout',
